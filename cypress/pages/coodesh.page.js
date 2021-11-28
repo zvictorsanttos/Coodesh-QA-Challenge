@@ -1,24 +1,35 @@
-export class AutomationPesquisa {
+export class AutomationCoodesh {
   static visitarHome(site) {
     cy.visit("/");
   }
 
-  /*static visualizarLayout(layout) {
-    cy.get("#fragment-0-ehmo > .component-heading > div").should(
-      "contain",
-      "Guia Médico"
-    );
+  static visualizarLogin(Login) {
+    cy.get(".transition-3d-hover").click()
+    ;
   }
 
-  static clicar_ConsulteAgora(consulte) {
-    cy.get("#fragment-oimm-link").click();
+  static clicar_Criarconta(conta) {
+    cy.get(`[href="/auth/candidates/signup"]`).click();
+    }
+
+  static preencher_Formulariocadastro(cadastro) {
+    cy.get("#displayName").type("QA Teste");
+    cy.get("#email").type("qatestcoodesh1333@hotmail.com");
+    cy.get("#password").type("Testqacoodesh1@");
+    
   }
 
-  static visualizar_Buscarapida(buscarapida) {
-    cy.get("#react-tabs-0").should("contain", "Busca rápida");
+  static aceitar_Termos(termos) {
+    cy.get('input[value="1"]').should('not.be.visible').check({ force: true
+    }).should('be.checked');
+    cy.wait(25000);    
+    cy.get(".mt-5 > :nth-child(5)").click();
+    cy.wait(10000);
   }
-
-  static pesquisar_medicosRiodeJaneiro(medicos) {
+  static validar_Perfil(validation) {
+    cy.get('.ml-3').should('be.visible','Adicionar');
+  }
+  /*static pesquisar_medicosRiodeJaneiro(medicos) {
     cy.get(".AutoSuggest__value-container").type("Rio de Janeiro");
   }
 

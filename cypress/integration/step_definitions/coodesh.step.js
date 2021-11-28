@@ -6,17 +6,31 @@ import {
   And,
   But,
 } from "cypress-cucumber-preprocessor/steps";
-import { AutomationPesquisa } from "../../pages/pesquisa.page";
+import { AutomationCoodesh } from "../../pages/coodesh.page";
 
-Given(`que esteja na home do site unimed`, (site) => {
-  AutomationPesquisa.visitarHome(site);
+Given(`que esteja na home do site coodesh`, (site) => {
+  AutomationCoodesh.visitarHome(site);
 });
 
-/*When(`visualize o layout "Guia Médico"`, (layout) => {
-  AutomationPesquisa.visualizarLayout(layout);
-});
+And (`visualize o layout "Login"`, (Login) => {
+  AutomationCoodesh.visualizarLogin(Login);
+})
 
-When(`clique no botão "Consulte agora"`, (consulte) => {
+And (`clique no botão "Criar Conta"`, (conta) => {
+  AutomationCoodesh.clicar_Criarconta(conta);
+})
+When(`preencher o formulario de Cadastro`, (cadastro) => {
+  AutomationCoodesh.preencher_Formulariocadastro(cadastro);
+});
+And(`aceitar o termos e condições e clicar em "Inscrever-se"`, (termos) => {
+  AutomationCoodesh.aceitar_Termos(termos);
+});
+Then(`devera visualizar a tela de perfil do usuario cadastrado`, (validation) => {
+  AutomationCoodesh.validar_Perfil(validation);
+
+})
+
+/*When(`clique no botão "Consulte agora"`, (consulte) => {
   AutomationPesquisa.clicar_ConsulteAgora(consulte);
 });
 
