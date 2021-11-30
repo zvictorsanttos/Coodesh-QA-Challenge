@@ -12,23 +12,30 @@ Given(`que esteja na home do site coodesh`, (site) => {
   AutomationCoodesh.visitarHome(site);
 });
 
-And (`visualize o layout "Login"`, (Login) => {
+And(`visualize o layout "Login"`, (Login) => {
   AutomationCoodesh.visualizarLogin(Login);
-})
+});
 
-And (`clique no botão "Criar Conta"`, (conta) => {
+And(`clique no botão "Criar Conta"`, (conta) => {
   AutomationCoodesh.clicar_Criarconta(conta);
-})
+});
 When(`preencher o formulario de Cadastro`, (cadastro) => {
   AutomationCoodesh.preencher_Formulariocadastro(cadastro);
 });
 And(`aceitar o termos e condições e clicar em "Inscrever-se"`, (termos) => {
   AutomationCoodesh.aceitar_Termos(termos);
 });
-Then(`devera visualizar a tela de perfil do usuario cadastrado`, (validation) => {
-  AutomationCoodesh.validar_Perfil(validation);
 
-})
+//CheckPoint Tela de Perfil
+And(
+  `devera visualizar a tela de perfil do usuario cadastrado`,
+  (validation) => {
+    AutomationCoodesh.validar_Perfil(validation);
+  }
+);
+Then(`devera preencher o perfil de cadastro`, (perfil) => {
+  AutomationCoodesh.preencher_Perfil(perfil);
+});
 
 /*When(`clique no botão "Consulte agora"`, (consulte) => {
   AutomationPesquisa.clicar_ConsulteAgora(consulte);
