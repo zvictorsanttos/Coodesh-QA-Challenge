@@ -10,7 +10,7 @@ export class AutomationCoodesh {
   }
 
   static visualizarLogin(Login) {
-    cy.get(".transition-3d-hover").click();
+    cy.get(".nav-link > .transition-3d-hover").click();
   }
 
   static clicar_Criarconta(conta) {
