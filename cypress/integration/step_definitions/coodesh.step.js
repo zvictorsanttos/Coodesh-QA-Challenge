@@ -33,53 +33,18 @@ And(
     AutomationCoodesh.validar_Perfil(validation);
   }
 );
-Then(`devera preencher o perfil de cadastro`, (perfil) => {
+And(`devera preencher o perfil de cadastro`, (perfil) => {
   AutomationCoodesh.preencher_Perfil(perfil);
 });
-
-/*When(`clique no botão "Consulte agora"`, (consulte) => {
-  AutomationPesquisa.clicar_ConsulteAgora(consulte);
+And(`devera clicar no botão "Ir ao dashboard"`, (dashboard) => {
+  AutomationCoodesh.clicar_Dashboard(dashboard);
 });
 
-When(`visualizar a aba "Busca rápida"`, (buscarapida) => {
-  AutomationPesquisa.visualizar_Buscarapida(buscarapida);
+And(`devera clicar no botão "Vagas"`, (vagas) => {
+  AutomationCoodesh.clicar_Vagas(vagas);
 });
 
-When(`e pesquisar por Médicos no Rio de Janeiro`, (medicos) => {
-  AutomationPesquisa.pesquisar_medicosRiodeJaneiro(medicos);
+Then(`devera visualizar a tela com as vagas disponiveis`, (pesquisarvagas) => {
+  AutomationCoodesh.pesquisar_Vagas(pesquisarvagas);
 });
 
-When(`clicar no botão "Pesquisar"`, (pesquisa) => {
-  AutomationPesquisa.clicar_pesquisar(pesquisa);
-});
-
-//Cenario 1
-
-Then(
-  `devera visualizar os resultados com todo os médicos do Rio de Janeiro`,
-  (resultado) => {
-    AutomationPesquisa.visualizar_resultados(resultado);
-  }
-);
-
-Then(
-  `devera visualizar a Especialidade e Cidade de cada médico`,
-  (EspecialidadeCidade) => {
-    AutomationPesquisa.visualizar_EspecialidadeCidade(EspecialidadeCidade);
-  }
-);
-
-//Cenario 2
-
-Then(`não devera conter a cidade São Paulo na primeira pagina`, (naoconter) => {
-  AutomationPesquisa.visualizar_naoconterSP(naoconter);
-});
-
-//Then(`não devera conter a cidade São Paulo na segunda pagina`, (paginacao) => {
-//	AutomationPesquisa.paginacao_naoconterSP(paginacao)
-//});
-
-//Then(`não devera conter a cidade São Paulo na terceira pagina`, (paginacao) => {
-//    AutomationPesquisa.paginacao_naoconterSP(paginacao)
-//});
-*/

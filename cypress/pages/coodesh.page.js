@@ -1,3 +1,9 @@
+const faker = require("faker");
+
+const randomName = faker.name.findName();
+const randomEmail = faker.internet.email();
+const randomCPF = faker.address.zipCode();
+
 export class AutomationCoodesh {
   static visitarHome(site) {
     cy.visit("/");
@@ -12,8 +18,8 @@ export class AutomationCoodesh {
   }
 
   static preencher_Formulariocadastro(cadastro) {
-    cy.get("#displayName").type("QA Teste");
-    cy.get("#email").type("qatestcoodesh110112220033@hotmail.com");
+    cy.get("#displayName").type(randomName);
+    cy.get("#email").type(randomEmail);
     cy.get("#password").type("Testqacoodesh1@");
   }
 
@@ -32,22 +38,11 @@ export class AutomationCoodesh {
 
   static preencher_Perfil(perfil) {
     cy.get(".ml-3").click();
-    cy.get("#cpf").type("242.279.310-36");
+    cy.get("#cpf").type(randomCPF);
     cy.get("#summary").type("Desafio Coodesh Vaga Para QA");
-    //cy.get(".facebook_url").type("qatestcoodesh.com/qavaga");
-    //cy.get(".linkedin_url").type("qatestcoodesh.com/qavaga");
-    //cy.get(".twitter_url").type("qatestcoodesh.com/qavaga");
-    //cy.get("#social_medias.github_url").type("qatestcoodesh.com/qavaga");
-    //cy.get("#social_medias.stackoverflow_url").type("qatestcoodesh.com/qavaga");
-    //cy.get("#social_medias.medium").type("qatestcoodesh.com/qavaga");
-    //cy.get("#social_medias.devto").type("qatestcoodesh.com/qavaga");
-    //cy.get("#social_medias.twitch").type("qatestcoodesh.com/qavaga");
-    //cy.get("[id='social_medias.youtube']").type(
-    //  "https://www.youtube.com/channel/UC7QaQPOIOaZ7g-ZwPyuqTFw"
-    //);
-    //cy.get("#social_medias.behance").type("qatestcoodesh.com/qavaga");
-    //cy.get("#social_medias.dribble").type("qatestcoodesh.com/qavaga");
-    //cy.get("#social_medias.whereby").type("qatestcoodesh.com/qavaga");
+    cy.get("[id='social_medias.facebook_url']").type(
+      "https://www.facebook.com/bruno.cerza"
+    );
     cy.get("[id='preferences.job_search']").select("searching_asap");
     cy.get("#race").select("noanswer");
     cy.get("#gender").select("noanswer");
@@ -68,39 +63,22 @@ export class AutomationCoodesh {
     cy.get(".justify-content-end > .transition-3d-hover").click();
   }
 
-  /*static clicar_pesquisar(pesquisa) {
-    cy.get(".Button").click();
+  static clicar_Dashboard(dashboard) {
+    cy.wait(10000);
+    cy.get(".nav-link").click();
   }
 
-  static visualizar_resultados(resultado) {
-    cy.get("#gm-v3-root > :nth-child(1) > :nth-child(2)").should("be.visible");
+  static clicar_Vagas(vagas) {
+    cy.get(":nth-child(3) > .p-3 > .align-items-center").click();
   }
 
-  static visualizar_EspecialidadeCidade(EspecialidadeCidade) {
-    cy.wait(25000);
-    cy.get("#gm-v3-root > :nth-child(1) > :nth-child(2)").should(
-      "contain",
-      "Goytacazes/RJ"
-    );
+  static pesquisar_Vagas(pesquisarvagas) {
     cy.get(
-      ":nth-child(1) > .ProviderCard > .Provider--infos > .ProviderSpecialties > .ProviderSpecialties--item"
-    )
-      .should("be.visible", "Specialties")
-      .screenshot();
+      ":nth-child(1) > .js-focus-state > .input-group > .form-control"
+    ).type("Pleno");
+    cy.get(
+      ":nth-child(2) > .js-focus-state > .input-group > .form-control"
+    ).type("São Paulo");
+    cy.get(".align-self-lg-end > .transition-3d-hover").click().screenshot();
   }
-
-  static visualizar_naoconterSP(naoconter) {
-    cy.wait(25000);
-    cy.get("#gm-v3-root > :nth-child(1) > :nth-child(2)")
-      .should("not.contain.text", "São Paulo/SP")
-      .screenshot();
-  }
-
-  static paginacao_naoconterSP(paginacao) {
-    cy.wait(15000);
-    cy.get(".justify-content-center > .Button").click();
-    cy.get("#gm-v3-root > :nth-child(1) > :nth-child(2)")
-      .should("not.contain.text", "São Paulo/SP")
-      .screenshot();
-  }*/
 }
