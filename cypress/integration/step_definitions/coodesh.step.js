@@ -16,11 +16,15 @@ And(`visualize o layout "Login"`, (Login) => {
   AutomationCoodesh.visualizarLogin(Login);
 });
 
-And(`clique no botão "Criar Conta"`, (conta) => {
-  AutomationCoodesh.clicar_Criarconta(conta);
-});
+
 When(`preencher o formulario de Cadastro`, (cadastro) => {
   AutomationCoodesh.preencher_Formulariocadastro(cadastro);
+});
+When(`preencher campos com dados validos`, () => {
+  AutomationCoodesh.preencher_Login();
+});
+When(`preencher campos com dados invalidos`, () => {
+  AutomationCoodesh.preencher_LoginInvalidos();
 });
 And(`aceitar o termos e condições e clicar em "Inscrever-se"`, (termos) => {
   AutomationCoodesh.aceitar_Termos(termos);
@@ -47,4 +51,13 @@ And(`devera clicar no botão "Vagas"`, (vagas) => {
 Then(`devera visualizar a tela com as vagas disponiveis`, (pesquisarvagas) => {
   AutomationCoodesh.pesquisar_Vagas(pesquisarvagas);
 });
+
+Then(`devera visualizar a tela principal`, () => {
+  AutomationCoodesh.validar_MenuPrincipal();
+});
+
+Then(`devera retornar mensagem de erro`, () => {
+  AutomationCoodesh.validar_MensagemDeErro();
+});
+
 

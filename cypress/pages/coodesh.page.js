@@ -1,3 +1,4 @@
+import { LOGIN } from "./components/login.components";
 const faker = require("faker");
 
 const randomName = faker.name.findName();
@@ -10,62 +11,71 @@ export class AutomationCoodesh {
   }
 
   static visualizarLogin(Login) {
-    cy.get(".nav-link > .transition-3d-hover").click();
-  }
-
-  static clicar_Criarconta(conta) {
-    cy.get(`[href="/auth/candidates/signup"]`).click();
+    cy.get('#onetrust-accept-btn-handler').click()
+    cy.get(".css-ho5z4q > .chakra-stack > .chakra-button").click();
+    cy.wait(5000)
   }
 
   static preencher_Formulariocadastro(cadastro) {
-    cy.get("#displayName").type(randomName);
-    cy.get("#email").type(randomEmail);
-    cy.get("#password").type("Testqacoodesh1@");
+    cy.get("#field-6").type(randomName);
+    cy.get("#field-7").type(randomEmail);
+    cy.get("#field-8").type("Testqacoodesh1@");
   }
 
   static aceitar_Termos(termos) {
-    cy.get('input[value="1"]')
-      .should("not.be.visible")
-      .check({ force: true })
-      .should("be.checked");
-    cy.wait(10000);
-    cy.get(".mt-5 > :nth-child(5)").click();
+    cy.get('#tabs-12--tabpanel-0 > .css-1811skr > .css-14vqccz > .chakra-switch > .chakra-switch__track > .chakra-switch__thumb').click()
+    cy.get('#tabs-12--tabpanel-0 > .css-1811skr > .css-18dmrac').click()
     cy.wait(10000);
   }
-  static validar_Perfil(validation) {
-    cy.get(".ml-3").should("be.visible", "Adicionar");
-  }
+
 
   static preencher_Perfil(perfil) {
-    cy.get(".ml-3").click();
-    cy.get("#cpf").type(randomCPF);
-    cy.get("#summary").type("Desafio Coodesh Vaga Para QA");
-    cy.get("[id='social_medias.facebook_url']").type(
-      "https://www.facebook.com/bruno.cerza"
-    );
-    cy.get("[id='preferences.job_search']").select("searching_asap");
-    cy.get("#race").select("noanswer");
-    cy.get("#gender").select("noanswer");
+    cy.get(':nth-child(7) > .custom-control > .checkbox-outline__label').click()
+    cy.get('.col-md-12 > .react-select > .css-yk16xz-control > .css-8bb4di > .css-tlfecz-indicatorContainer').type('Amazon API').wait(5000).press('enter')
+    cy.get('#years_experience').select('+5 anos')
+    cy.get('.react-tel-input > .form-control').type('81995291069')
+    cy.get("[id='address.city']").type('Vitoria de Santo Antão')
+    cy.get('#home-office-integral').click()
+    cy.get('.w-100').click()
+    cy.get('.col-lg-12 > .react-select > .css-yk16xz-control > .css-8bb4di > .css-tlfecz-indicatorContainer').click().wait(5000)
+    cy.contains('Cultura e Esporte').click({force:true})
+    cy.get("#race").select("Pessoa Parda");
+    cy.get("#gender").select("Homem");
     cy.get("#sexual_orientation").select("noanswer");
     cy.get("[id='disabilities.type']").select("none");
-    cy.get("#clt")
-      .should("not.be.visible")
-      .check({ force: true })
-      .should("be.checked");
-    cy.get("[id='preferences.salary_range.currency']").select("USD");
-    cy.get("[id='preferences.salary_range.min']").type("10000");
-    cy.get("[id='preferences.salary_range.max']").type("50000");
-    cy.get("[id='address.city']").type("Maldivas");
-    cy.get("[id='preferences.other_cities']")
-      .should("not.be.visible")
-      .check({ force: true })
-      .should("be.checked");
-    cy.get(".justify-content-end > .transition-3d-hover").click();
+    cy.get('.btn-primary').click()
+    cy.get('.btn-primary').click()
+    cy.get(':nth-child(1) > td').click()
+    cy.get(':nth-child(9) > td > .rc-slider > .rc-slider-rail').click()
+    cy.get('.btn-primary').click()
+    cy.get(':nth-child(5) > td').click()
+    cy.get('.btn-primary').click().wait(3000)
+    cy.get('.d-flex > .w-100').click()
   }
 
-  static clicar_Dashboard(dashboard) {
-    cy.wait(10000);
-    cy.get(".nav-link").click();
+   static preencher_Login() {
+     cy.get('#onetrust-accept-btn-handler').click()
+     cy.get("[id='field-6']").type(LOGIN.INP_EMAIL)
+     cy.get("[id='field-7']").type(LOGIN.INP_SENHA)
+     cy.contains("Entrar").click()
+
+  }
+  static preencher_LoginInvalidos() {
+    cy.get('#onetrust-accept-btn-handler').click()
+    cy.get("[id='field-6']").type(LOGIN.INP_EMAILINVALIDO)
+    cy.get("[id='field-7']").type(LOGIN.INP_SENHA)
+    cy.contains("Entrar").click()
+
+ }
+
+  
+
+  static validar_MenuPrincipal(){
+    cy.contains("Seja bem-vindo!").should("be.visible")
+  }
+  static validar_MensagemDeErro(){
+    cy.wait(3000)
+    cy.contains("Usuário não encontrado").should("be.visible")
   }
 
   static clicar_Vagas(vagas) {
@@ -73,12 +83,11 @@ export class AutomationCoodesh {
   }
 
   static pesquisar_Vagas(pesquisarvagas) {
-    cy.get(
-      ":nth-child(1) > .js-focus-state > .input-group > .form-control"
-    ).type("Pleno");
-    cy.get(
-      ":nth-child(2) > .js-focus-state > .input-group > .form-control"
-    ).type("São Paulo");
-    cy.get(".align-self-lg-end > .transition-3d-hover").click().screenshot();
+    cy.get('.col-lg-7 > .input-group > .form-control').type("Mary Flower - Factory Software")
+    cy.get('.col-lg-3 > .input-group > .form-control').type("Belo Horizonte")
+    cy.get('.align-self-lg-end > .btn-block').click()
+    cy.contains('Mary Flower - Factory Software').scrollIntoView().should('be.visible')
+    cy.contains('QA Mobile').scrollIntoView().should('be.visible')
+    
   }
 }

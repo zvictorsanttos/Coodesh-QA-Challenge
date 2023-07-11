@@ -1,6 +1,6 @@
 # Automação de teste realizado na plataforma Coodesh
 
-URL da gravação da explicação do teste : https://www.loom.com/share/91b32d21c61a4d68b02ace2f11b39624
+URL da gravação da explicação do teste : https://www.loom.com/share/9324d1dbb98a47008135730488a853ce
 
 # Ferramentas utilizadas
 
